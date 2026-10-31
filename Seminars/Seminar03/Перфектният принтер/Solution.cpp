@@ -11,16 +11,14 @@ bool OK(const std::vector<size_t> &v, size_t seconds, size_t sheets) {
 }
 
 size_t binarySearch(const std::vector<size_t> &v, size_t left, size_t right, long long sheets) {
-    size_t ans = right;
-    while (left <= right) {
+    while (left < right) {
         size_t mid = left + (right - left) / 2;
         if (OK(v, mid, sheets)) {
-            ans = std::min(ans,mid);
-            right = mid - 1;
+            right = mid;
         } else
             left = mid + 1;
     }
-    return ans;
+    return left;
 }
 
 size_t binarySearch(const std::vector<size_t> &v, long long sheets) {
